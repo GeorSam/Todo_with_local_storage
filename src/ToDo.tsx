@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ToDoList from "./ToDoList";
 import type { ToDoItem } from "./types";
+import "./ToDo.css";
 
 export default function ToDo() {
   const [text, setText] = useState("");
@@ -25,13 +26,20 @@ export default function ToDo() {
   return (
     <div className="container">
       <div className="background">
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        ></textarea>
+        <div>
+          <textarea
+            className="textArea"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          ></textarea>
 
-        <button onClick={handleAdd}>Add To Do Item</button>
-        <ToDoList list={toDoList} handleDelete={handleDelete} />
+          <button className="addButton" onClick={handleAdd}>
+            Add To Do Item
+          </button>
+        </div>
+        <div className="toDoList">
+          <ToDoList list={toDoList} handleDelete={handleDelete} />
+        </div>
       </div>
     </div>
   );
